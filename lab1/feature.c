@@ -22,8 +22,8 @@ void feature(union Data newData)
 	dummy = newData.l < 0 ? -1 : 1;
 	printf("long sign: %d\n", dummy);
 	printf("char array: \n");
-
-	for(int i = 0; i < 8; i++)
+	int i = 0;
+	for(i = 0; i < 8; i++)
 	{
 		printf("%c\n", newData.str[i]);
 	}
@@ -33,6 +33,6 @@ int main()
 {
 
 	union Data user_data;
-	user_data.l = 74659376584;
+	user_data.l = 746584;
 	feature(user_data);
 }
