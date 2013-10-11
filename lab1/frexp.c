@@ -1,4 +1,4 @@
-double frexp(double x){
+double frexp(double x, int *exp){
 
 }
 
