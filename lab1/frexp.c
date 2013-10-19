@@ -21,25 +21,19 @@ double frexp(double x, int *exp)
 	mant_word = F64_GET_MANT_HIGH(x);
 
 
-
-	// Check if exponent is all 1s (nan, inf, -inf)
+	// If exponent is all 1s (nan, inf, -inf)
 	if( ((*exp+F64_EXP_BIAS) ^ ((unsigned long)0)) == 0x7FF){
     		ret = x;
 		goto end;
+	// If exponent is all 0's
 	}else if(((*exp + F64_EXP_BIAS) & 0xFFFFFFFF) == 0){
+		// Set hidden bit to 0
 		ret = 0;
 	}
 
-	// Check if mantissa(first high then low bytes) is 0
-//    	if( (mant_word | (unsigned long)0) == 0 && (F64_GET_MANT_LOW(x) | (unsigned long)0) == 0){
-//		ret = 0;
-//		*exp = 0;
-//		goto end;
-//    	}
-
 	// Converting the mantissa to a double
 
-	int new_val = 0; // holds the most significant bit
+	int new_val = 0; // holds the current most significant bit
 	double pow2 = 0.5; // starting power of 2
 
 	int second_byte = 0;
@@ -58,7 +52,7 @@ double frexp(double x, int *exp)
 		// next power of 2 lower
 		pow2 = pow2/2;
 	
-		// check the second byte toooo..!!
+		// check the second byte toooo..!! (since beaglebone is 32bit)
 		if(mant_word == 0 && second_byte == 0){
 			second_byte = 1;
 			mant_word = F64_GET_MANT_LOW(x);
@@ -107,15 +101,6 @@ int main(int argc, char *argv[])
 		r = frexp(0.0/0.0, &exp);
 		printf("value of %g, returns normalized fraction = %g and exponent = %d \n", 0.0/0.0, r, exp);
 
-		printf("test %u \n", F64_GET_MANT_HIGH(x) && ((unsigned long) 1 << 31));
-		printf("byte7: %u \n", ( BYTE_ARR(x)[7] & 0x7F));
-		printf("byte6: %u \n", ( BYTE_ARR(x)[6] & 0xFF));
-		printf("byte5: %u \n", ( BYTE_ARR(x)[5] & 0xFF));
-		printf("byte4: %u \n", ( BYTE_ARR(x)[4] & 0xFF));
-		printf("byte3: %u \n", ( BYTE_ARR(x)[3] & 0xFF));
-		printf("byte2: %u \n", ( BYTE_ARR(x)[2] & 0xFF));
-		printf("byte1: %u \n", ( BYTE_ARR(x)[1] & 0xFF));
-		printf("byte0: %u \n", ( BYTE_ARR(x)[0] & 0xFF));
 	}   
 
 	return 0;
