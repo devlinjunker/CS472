@@ -1,0 +1,122 @@
+\documentclass[letterpaper,10pt,titlepage]{article}
+
+\usepackage{graphicx}                                        
+\usepackage{amssymb}                                         
+\usepackage{amsmath}                                         
+\usepackage{amsthm}                                          
+
+\usepackage{alltt}                                           
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=9in, textwidth=6.5in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Philip Lenox, Devlin Junker}
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs472 ``computer architecture'' clements ``chapter 1''},
+  pdftitle = {CS 472: Homework 2},
+  pdfsubject = {CS 472: Homework 2},
+  pdfpagemode = UseNone
+}
+
+\begin{document}
+\hfill \name
+
+\hfill \today
+
+\hfill CS 472 HW 2
+
+\begin{enumerate}
+
+
+
+\item[$(3.1)$]Why is the program counter a pointer and not a counter?
+	 
+	 Counters are realtive to a certain point, which would have to be specified in another point. The pointer is similar to a counter, only with the starting point located at the start or end of memory depending on the system. A pointer is also used because of branch / jump statements that cause the pointer to move in a non-sequential manner.
+	
+\item[$(3.2)$]Expalin the function of the following registers
+
+\begin{enumerate}
+\item PC: program counter, keeps track of the location of the next instruction to be executed
+\item MAR: Memory Address Register: stores the address of the data to be retrieved or stored
+\item MBR: Memory Buffer Register: stores the data to be loaded or stored
+\item IR: Instruction Register: stores the current fetched instruction 
+\end{enumerate}
+
+\item[$(3.3)$]
+
+\begin{enumerate}
+\item c =0 z =0 v=0 n=0
+\item c =1 z =1 v=0 n=0
+\item c =0 z =0 v=0 n=0
+\item c =1 z =0 v=0 n=0
+\item c =0 z =0 v=0 n=1
+\item c =1 z =0 v=1 n=0
+\end{enumerate}
+
+\item[$(3.10)$]Why does ARM implement a reverse subtract?
+
+Because literals can only be stored operand 2, so this allows the programmer to subtract from a literal.
+\item[$(3.17)$]What are the advantages and disadvantages of of storing the 12 bit literal as an 8 bit literal and a 4 bit shift?
+
+This allows for a greater range of values the literal, but gives less precision, especially when moving further from zero.
+\item[$(3.18)$] Whrite one or more ARM instructions that will clear bits 20 to 25 inclusive in register 0.
+
+$AND R0, R0, \#0xfe0fffff$
+\item[$(3.19)$]Swap without an extra register.
+
+$EOR R0, R0, R1
+EOR R1, R0, R1
+EOR R0, R0, R1$
+\item[$(3.25)$]
+
+\begin{enumerate}
+\item xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+\item xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+\item xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+\item xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+\end{enumerate}
+\item[$(3.39)$]
+$START:
+LDRB r2, [r0],\#1
+STRB r2, [r1],\#1
+TEQ R2, \#0
+BRNE START
+$
+\item[$(3.51)$]Why is the program counter a pointer and not a counter?	 
+\end{enumerate}
+$START:
+MOV r0, \#1
+TEQ r1, r2
+BREQ END
+LDRB r3, [r1], \#1
+LDRB r4, [r2], \#-1
+TEQ r3, r4
+BRNE NO
+B START$
+$
+NO:
+mov r0, \#0
+END:
+$
+\end{document}

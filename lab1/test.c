@@ -2,5 +2,5 @@
 
 int main()
 {
-	printf( "%d\n", sizeof(long));
+	printf( "%d\n", (int)sizeof(long));
 }
