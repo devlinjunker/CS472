@@ -44,7 +44,7 @@
 
 \hfill \today
 
-\hfill CS 472 HW 2
+\hfill CS 472 HW 3
 
 \begin{enumerate}
 
@@ -82,12 +82,12 @@ Because literals can only be stored operand 2, so this allows the programmer to 
 This allows for a greater range of values the literal, but gives less precision, especially when moving further from zero.
 \item[$(3.18)$] Whrite one or more ARM instructions that will clear bits 20 to 25 inclusive in register 0.
 
-$AND R0, R0, \#0xfe0fffff$
+AND R0, R0, \#0xfe0fffff
 \item[$(3.19)$]Swap without an extra register.
 
-$EOR R0, R0, R1
-EOR R1, R0, R1
-EOR R0, R0, R1$
+EOR R0, R0, R1 \\
+EOR R1, R0, R1 \\ 
+EOR R0, R0, R1 \\
 \item[$(3.25)$]
 
 \begin{enumerate}
@@ -97,26 +97,26 @@ EOR R0, R0, R1$
 \item xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
 \end{enumerate}
 \item[$(3.39)$]
-$START:
-LDRB r2, [r0],\#1
-STRB r2, [r1],\#1
-TEQ R2, \#0
-BRNE START
-$
-\item[$(3.51)$]Why is the program counter a pointer and not a counter?	 
+START: \\
+LDRB r2, [r0],\#1 \\
+STRB r2, [r1],\#1 \\
+TEQ R2, \#0 \\
+BRNE START \\
+
+\item[$(3.51)$]	 
 \end{enumerate}
-$START:
-MOV r0, \#1
-TEQ r1, r2
-BREQ END
-LDRB r3, [r1], \#1
-LDRB r4, [r2], \#-1
-TEQ r3, r4
-BRNE NO
-B START$
-$
-NO:
-mov r0, \#0
-END:
-$
+START:\\
+MOV r0, \#1 \\
+TEQ r1, r2 \\
+BREQ END \\
+LDRB r3, [r1], \#1 \\
+LDRB r4, [r2], \#-1 \\
+TEQ r3, r4 \\
+BRNE NO \\
+B START \\
+\\
+NO:\\
+MOV r0, \#0 \\
+END: \\
+
 \end{document}
