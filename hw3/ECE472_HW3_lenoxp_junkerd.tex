@@ -34,8 +34,8 @@
   urlcolor = black,
   pdfauthor = {\name},
   pdfkeywords = {cs472 ``computer architecture'' clements ``chapter 1''},
-  pdftitle = {CS 472: Homework 2},
-  pdfsubject = {CS 472: Homework 2},
+  pdftitle = {CS 472: Homework 3},
+  pdfsubject = {CS 472: Homework 3},
   pdfpagemode = UseNone
 }
 
@@ -88,22 +88,26 @@ AND R0, R0, \#0xfe0fffff
 EOR R0, R0, R1 \\
 EOR R1, R0, R1 \\ 
 EOR R0, R0, R1 \\
-\item[$(3.25)$]
+
+\item[$(3.25)$]What is the binary encoding for the given instructions?
 
 \begin{enumerate}
-\item xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
-\item xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
-\item xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
-\item xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+\item 1110 0110 0100 0000 0000 0000 0000 0000
+\item 1110 0111 1011 0011 0100 0000 0000 0101
+\item 1110 0110 1011 0011 0100 0000 0000 0101
+\item 1110 0111 0011 0011 0100 0011 0000 0000
 \end{enumerate}
-\item[$(3.39)$]
+
+\item[$(3.39)$] Copy a string from one location to another
+
 START: \\
 LDRB r2, [r0],\#1 \\
 STRB r2, [r1],\#1 \\
 TEQ R2, \#0 \\
 BRNE START \\
 
-\item[$(3.51)$]	 
+\item[$(3.51)$]	test for palindromes
+
 \end{enumerate}
 START:\\
 MOV r0, \#1 \\
