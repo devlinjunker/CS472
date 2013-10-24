@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <time.h>
 
-#define SIZE (1<<14)
-#define NPAD 0
+#define SIZE (1<<17)
+#define NPAD 15
 
 struct l {
 	struct l *n;
@@ -33,7 +33,7 @@ int main()
 	struct l new;
 	int j = 0;
 	t = clock();
-	for (j = 0; j < SIZE*100000; j++)
+	for (j = 0; j < (1<<24); j++)
 	{
 		new  = *current.n;
 		current = new;
