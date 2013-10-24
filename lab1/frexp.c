@@ -22,7 +22,7 @@ double frexp(double x, int *exp)
 
 
 	// If exponent is all 1s (nan, inf, -inf)
-	if( ((*exp+F64_EXP_BIAS) ^ ((unsigned long)0)) == 0x7FF){
+	if( ((*exp+F64_EXP_BIAS) ^ ((unsigned long )0))  == 0x7FF){
     		ret = x;
 		goto end;
 	// If exponent is all 0's
@@ -60,7 +60,7 @@ double frexp(double x, int *exp)
 	}
 
 	// normalized fractions are between 0.5 (inclusive) and 1 (exclusive)
-    	while((int)ret >= 1 || ret < 0.5){
+    	while((ret != 0) && ((int)ret >= 1 || ret < 0.5)){
 		if((int)ret >= 1){
 			ret = ret / 2; 
 			*exp = *exp + 1;
@@ -79,6 +79,22 @@ end:
 	return ret;
 }
 
+
+int main(int argc, char *argv[])
+{
+	double x, r;
+	int exp;
+
+	x = strtod(argv[1], NULL);
+	r = frexp(x, &exp);
+
+	printf("frexp(%g, &e) = %g: %g * %d^%d = %g\n",x, r, r, 2, exp, x);
+	return 0;
+}
+
+
+
+/*
 int main(int argc, char *argv[])
 {
 	int exp;
@@ -109,3 +125,4 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+*/
