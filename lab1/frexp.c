@@ -71,6 +71,10 @@ double frexp(double x, int *exp)
 
 	}
 	
+	if((BYTE_ARR(x)[7] & 0x80) == 0x80){
+		ret = ret * -1;
+	}
+
 end:
 	return ret;
 }
