@@ -1,0 +1,203 @@
+\documentclass[letterpaper,10pt,titlepage]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\usepackage{alltt}
+\usepackage{float}
+\usepackage{color}
+\usepackage{url}
+
+\usepackage{balance}
+\usepackage[TABBOTCAP, tight]{subfigure}
+\usepackage{enumitem}
+\usepackage{pstricks, pst-node}
+
+\usepackage{geometry}
+\geometry{textheight=9in, textwidth=6.5in}
+
+%random comment
+
+\newcommand{\cred}[1]{{\color{red}#1}}
+\newcommand{\cblue}[1]{{\color{blue}#1}}
+
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\def\name{Philip Lenox, Devlin Junker}
+
+%% The following metadata will show up in the PDF properties
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  pdfauthor = {\name},
+  pdfkeywords = {cs472 ``computer architecture'' clements ``chapter 1''},
+  pdftitle = {CS 472: Homework 3},
+  pdfsubject = {CS 472: Homework 3},
+  pdfpagemode = UseNone
+}
+
+\begin{document}
+\hfill \name
+
+\hfill \today
+
+\hfill CS 472 HW 3
+
+\begin{enumerate}
+
+
+
+\item[$(9.2)$] Why do computers use cache memory?
+
+Computers use cache memory because in an ideal world, we want large, fast, cheap memory. This memory does not exist, so we use the cached memory heirarchy to approximate this large, fast, cheap memory. 
+
+\item[$(9.3)$] What is the meaning of the following terms?
+\begin{enumerate}
+\item temoral locality : data that was recently used will likely be used again soon.
+\item spacial locality : data physically near data that was recently used will likely be used soon.
+\end{enumerate}
+
+\item[$(9.4)$] ratio = $ratio = \frac{1}{kh - h + 1}$
+
+\item[$(9.5)$] 
+
+\begin{enumerate}
+\item s = 5.263
+\item s = 6.896
+\item s = 4.166
+\item s = 12.739
+\end{enumerate}
+
+\item[$(9.6)$]
+
+\begin{enumerate}
+\item h = 0.096 
+\item h = 0.526
+\item h = 0.842
+\item h = 0.982
+\end{enumerate}
+
+\item[$(9.8)$]
+
+ratio = $S = \frac{m}{ch - m(h - 1)}$
+\begin{enumerate}
+\item S = 4
+\item S = 2
+\item S = 4
+\end{enumerate}
+
+\item[$(9.11)$]
+
+word - the word at the particular line which contains the data we are interested.
+line - a group of words containing at least 1 word
+set - a block of data the size of the cache, breaks memory into "set size block".
+
+\item[$(9.12)$]
+
+direct mapped: each memory location is mapped to 1 cache location
+Fully associative: each memory location can be stored in each cache location
+Associative (set): each memory location can be stored to multiple cache locations, but not all
+
+\item[$(9.17)$]
+
+Cache coherency refers to the possible discrepancies between the different memory hierarchies
+
+\item[$(9.22)$]
+
+The instruction cache is easier to implament because the contents of the instruction cache are not accessed because they are not modified, so no write-back is necessary. 
+
+\item[$(9.23)$]
+
+writeback: if cache hit, put it in. i fcache miss, pull in from memory, write to cache
+
+$h(t_{c}) + t_{m}(1-h) + t_{1}(1-h)$
+
+\item[$(9.26)$]
+
+$1 cycle(0.9) + 4 cycles(0.08) + 50 cycles(0.02)$
+
+Average cycles = 2.22 cycles 
+
+
+\item[$(9.28)$]
+
+global miss rate: misses in the cache divided by the total accesses to memory
+local miss rate: misses in the cache dvided by the total access to that cache.
+
+\item[$(9.35)$]
+
+64 bit precessor: 8 byte words
+Cache size: 4 way sset associative
+32 byte lines
+4 words per line: 2 bits
+8 MB / ways = 2 MB
+2M -> 23 bits
+\begin{tabular}{| c | c | c |}
+    set & line & word \\ \hline
+    23 bit & 2 bit &  bit \\ \hline
+\end{tabular}
+
+
+
+\item[$(9.41)$]
+
+cache CPU - prevent from hitting memory
+cache Disk - prevents from hitting disk
+
+
+\item[$(9.42)$]
+
+write back -only write to the lower tiers of memory when the data is being removed from the cache
+
+write through -write back to the lower tieres of memory every time the cache is written.
+
+write through is overall slower, but is better for coherency because the main store is update on average more quickly.
+
+\item[$(9.43)$]
+
+$2^32$ = 4GB
+4GB / 4KB = 1 million page table entries. 55 bits per page table entry. 20bits + 32bits + 3bits = 55bits.
+55bits * 1 million = 55Mbits or 6.88MBytes.
+
+\item[$(9.45)$] 
+
+1 cycle(0.07) + 2 cycles(0.15) + (0.1)[0.95(2 cycles) + 0.05(10 cycles)] + (0.05)[0.95(2 cycles) + 0.05 (10 cycles) + 5]
+Average cycles per instruction = 1.61
+
+\item[$(9.46)$] 
+
+$ (100 loop iterations)* (50 cycles + 2 cycles + 2 cycles) = 5400 cycles$
+
+\item[$(9.57)$]
+
+\begin{enumerate}
+
+\item
+
+\begin{tabular}{| c | c | c |}
+    set & line & word \\ \hline
+    8 bit & 10 bit & 6 bit \\ \hline
+\end{tabular}
+
+\item
+
+\begin{tabular}{| c | c | c |}
+    line & word & byte \\ \hline
+    18 bit & 5 bit & 1 bit \\ \hline
+\end{tabular}
+
+\item
+
+\begin{tabular}{| c | c | c |}
+    line & word & byte \\ \hline
+    18 bit & 5 bit & 1 bit \\ \hline
+\end{tabular}
+
+\end{enumerate}
+\end{enumerate}
+\end{document}
+
+
