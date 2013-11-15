@@ -60,7 +60,7 @@ double frexp(double x, int *exp)
 	}
 
 	// normalized fractions are between 0.5 (inclusive) and 1 (exclusive)
-    	while((int)ret >= 1 || ret < 0.5){
+    	while(ret != 0 && ((int)ret >= 1 || ret < 0.5)){
 		if((int)ret >= 1){
 			ret = ret / 2; 
 			*exp = *exp + 1;

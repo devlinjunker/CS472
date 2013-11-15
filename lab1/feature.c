@@ -6,7 +6,7 @@
 union Data
 {
 	char str[8];
-	double d;
+	float d;
 	long l;
 };
 
@@ -33,6 +33,6 @@ int main()
 {
 
 	union Data user_data;
-	user_data.l = 746584;
+	user_data.l = 0x449A4400;
 	feature(user_data);
 }
