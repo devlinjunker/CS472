@@ -1,3 +1,9 @@
+/*
+ * Cache Size Tester Program
+ * CS 472 - lab 3
+ * Devlin Junker and Phil Lenox
+ */
+
 #include <stdio.h>
 #include <time.h>
 

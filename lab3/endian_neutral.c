@@ -1,4 +1,10 @@
-//Will Smith lyrics at end of file
+/*
+ * Endian Nuetral Swapping (Runtime and Pre-processor)
+ * CS 472 - Lab 3
+ * Devlin Junker & Phil Lenox
+ * 
+ * Note: Will Smith lyrics at end of file
+ */
 #include <stdio.h>
 
 #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
