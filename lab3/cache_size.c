@@ -14,16 +14,16 @@ struct l big_array[SIZE];
 int main()
 {
 	printf("%d\n", sizeof(struct l));
-	int i = 0;
-	for(i = 0; i < SIZE; i++)
+	int meow = 0;
+	for(meow = 0; meow < SIZE; meow++)
 	{
-		if (i == SIZE - 1)
+		if (meow == SIZE - 1)
 		{
-			big_array[i].n = &big_array[0];
+			big_array[meow].n = &big_array[0];
 		}
 		else
 		{
-			big_array[i].n = &big_array[i+1];
+			big_array[meow].n = &big_array[meow+1];
 		}
 	}
 
